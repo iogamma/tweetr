@@ -50,21 +50,23 @@ var data = [
     },
     "created_at": 1461113796368
   }
-];
-
-$(document).ready(function() {
+]; $(document).ready(function() {
 
   function createTweetElement(tweet) {
     const $newTweet = $('<article>').addClass('tweet');
+    // html escape for untrusted sources
+    usernameHTMLEsc = html`${tweet.user.name}`;
+    handleHTMLEsc = html`${tweet.user.handle}`;
+    contentHTMLEsc = html`${tweet.content.text}`;
 
     $newTweet.append(
       `<header>
         <img class="avatar" src="${tweet.user.avatars.regular}">
-        <h1 class="name">${tweet.user.name}</h1>
-        <span class="handle">${tweet.user.handle}</span>
+        <h1 class="name">${usernameHTMLEsc}</h1>
+        <span class="handle">${handleHTMLEsc}</span>
       </header>
       <p>
-        ${tweet.content.text}
+        ${contentHTMLEsc}
       </p>
       <footer>
         <span class="date_created">${tweet.created_at} days ago</span>
@@ -84,8 +86,14 @@ $(document).ready(function() {
     }
   }
 
-  //========== TEST CODE
-  console.log(data);
-  renderTweets(data);
+  function postTweet() {
+    $.ajax( {
+      url: 'tweets/'
+      method:
+      success:
+    });
+  }
 
+  //========== TEST CODE
+  renderTweets(data);
 });

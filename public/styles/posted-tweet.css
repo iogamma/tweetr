@@ -8,6 +8,7 @@
 
 .tweet header {
   background: lightblue;
+  font-size: 14px;
   margin: 0;
   overflow: auto;
   padding: 10px;
