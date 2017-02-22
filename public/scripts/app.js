@@ -86,14 +86,21 @@ var data = [
     }
   }
 
-  function postTweet() {
+  // function postTweet() {
+  $('.tweet-form').on('submit', function() {
+    event.preventDefault();
     $.ajax( {
-      url: 'tweets/'
-      method:
-      success:
+      data: {
+        text: $(this).serialize()
+      },
+      method: 'POST',
+      success: function(data) {
+        alert('Tweet Posted!');
+      },
+      url: '/tweets'
     });
-  }
+  });
+
 
   //========== TEST CODE
-  renderTweets(data);
 });
