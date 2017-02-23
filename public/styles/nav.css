@@ -11,19 +11,6 @@
   z-index: 1;
 }
 
-.nav-bar .header {
-  float: left;
-  left: 10px;
-  position: relative;
-  top: 21px;
-}
-
-.nav-bar .logo {
-  float: left;
-  height: 80px;
-  width: 80px;
-}
-
 .nav-bar .button-compose {
   background: white;
   border: 1px solid black;
@@ -40,6 +27,19 @@
 .nav-bar .button-compose:hover {
   color: black;
   opacity: 1;
+}
+
+.nav-bar .brand {
+  float: left;
+  left: 10px;
+  position: relative;
+  top: 21px;
+}
+
+.nav-bar .logo {
+  float: left;
+  height: 80px;
+  width: 80px;
 }
 
 

@@ -6,18 +6,18 @@
   padding: 1em;
 }
 
-.new-tweet h2 {
+.new-tweet .compose{
   margin: 0 0 1em;
   border-bottom: thin solid #000000;
 }
 
-.new-tweet textarea {
+.new-tweet .user-input{
   display: block;
   right:0;
   width: 100%;
 }
 
-.new-tweet form input {
+.new-tweet .submit {
   float: left;
   position: relative;
   top: 3px;
