@@ -2,6 +2,7 @@
   background: lightgray;
   border: 1px solid gray;
   border-radius: 5px;
+  overflow: auto;
   padding: 1em;
 }
 
@@ -17,8 +18,19 @@
 }
 
 .new-tweet form input {
+  float: left;
   position: relative;
   top: 3px;
+}
+
+.new-tweet .invalid-msg {
+  color: red;
+  font-style: italic;
+  font-size: 12px;
+  float: left;
+  left: 1em;
+  position: relative;
+  top: 8px;
 }
 
 .new-tweet .counter {

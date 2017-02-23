@@ -2,6 +2,7 @@
 
 $(document).ready(function() {
   const CHAR_COUNT = 140;
+
   $('.counter').text(CHAR_COUNT);
 
   $('textarea').on('keyup', function() {

@@ -53,7 +53,7 @@
 
 .tweet footer {
   background: darkgrey;
-  font-size: 12px;ß
+  font-size: 12px;
   overflow: auto;
   padding: 1em;
 }
@@ -77,7 +77,7 @@
 
 .tweet:hover .fa-flag {
   float: right;
-  font-size: 16px;
+  font-size: 14px;
   margin: 0;
   opacity: 1;
   position: relative;
@@ -86,14 +86,14 @@
 
 .tweet:hover .fa-heart {
   float: right;
-  font-size: 16px;
+  font-size: 14px;
   opacity: 1;
   margin: 0;
 }
 
 .tweet:hover .fa-retweet {
   float: right;
-  font-size: 16px;
+  font-size: 14px;
   margin: 0;
   opacity: 1;
   position: relative;

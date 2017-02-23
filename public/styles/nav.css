@@ -1,4 +1,4 @@
-#nav-bar {
+.nav-bar {
   background: #00a087;
   color: #e8fdff;
   font-size: 200%;
@@ -11,17 +11,35 @@
   z-index: 1;
 }
 
-#nav-bar .header {
+.nav-bar .header {
   float: left;
   left: 10px;
   position: relative;
   top: 21px;
 }
 
-#nav-bar .logo {
+.nav-bar .logo {
   float: left;
   height: 80px;
   width: 80px;
+}
+
+.nav-bar .button-compose {
+  background: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: #00a087;
+  float: right;
+  font-size: 18px;
+  opacity: 0.7;
+  padding: 14px 5px;
+  position: relative;
+  top: 14px;
+}
+
+.nav-bar .button-compose:hover {
+  color: black;
+  opacity: 1;
 }
 
 

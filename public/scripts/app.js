@@ -50,23 +50,59 @@ $(document).ready(function() {
     });
   }
 
-  // function postTweet() {
+  // Checks for invalid cases in user input and returns a boolean and message if invalid
+  function validateUserData(userData) {
+    const validity = {
+      isValid: null,
+      invalidMsg: ''
+    }
+
+    if(!userData) {
+      validity.isValid = false;
+      validity.invalidMsg = 'You cannot post an empty tweet.';
+    } else if(userData.length > 140) {
+      validity.isValid = false;
+      validity.invalidMsg = 'You have reached your maximum character limit.';
+    } else {
+      validity.isValid = true;
+    }
+
+    return validity;
+  }
+
+  // Render the tweets on new or refreshed visit
+  loadTweets();
+
+  // Event Handlers
   $('.tweet-form').on('submit', function() {
+    let tweetText = $(this).find('textarea').val();
+    let validity = validateUserData(tweetText);
+
     event.preventDefault();
-    $.ajax( {
-      data: $(this).serialize(),
-      method: 'POST',
-      url: '/tweets'
-    }).then(function() {
-        $('.tweet-form').trigger('reset');
-        loadTweets();
-    }).fail(function() {
-        alert('Failed to post tweet.');
-    });
+
+    if (validity.isValid) {
+      $.ajax({
+          data: $(this).serialize(),
+          method: 'POST',
+          url: '/tweets'
+      }).then(function() {
+          $('.tweet-form').trigger('reset');
+          $('.invalid-msg').empty();
+          $('.posted-tweets').empty();
+          //TODO update counter
+          loadTweets();
+      }).fail(function() {
+          alert('Failed to post tweet.');
+      });
+    } else {
+      $('.invalid-msg').text(validity.invalidMsg);
+    }
+  });
+
+  $('.button-compose').on('click', function() {
+    $('.new-tweet').slideToggle();
+    $('.tweet-form').find('textarea').focus();
   });
 
 
-
-  //========== TEST CODE
-  loadTweets();
 });

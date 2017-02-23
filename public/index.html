@@ -44,9 +44,13 @@
   <body>
 
     <!-- Top nav bar (fixed) -->
-    <nav id="nav-bar">
+    <nav class="nav-bar">
       <img class="logo" src="images/bird.png">
       <span class="header">Tweeter</span>
+      <button class="button-compose">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        Compose
+      </button>
     </nav>
 
     <!-- Page-specific (main) content here -->
@@ -56,25 +60,11 @@
         <form class="tweet-form">
           <textarea name="text" placeholder="What are you humming about?"></textarea>
           <input type="submit" value="Tweet">
+          <span class="invalid-msg"></span>
           <span class="counter"></span>
         </form>
       </section>
-      <article class="posted-tweets">
-        <article class="tweet">
-          <header>
-            <img class="avatar" src = "images/bird.png">
-            <h1 class="name">Bill Fields</h1>
-            <span class="handle">@MrFields</span>
-          </header>
-          <p>Little tweet here. Hi My name is Bill. I like to tweeeeeet! Tweeeeet!</p>
-          <footer>
-            <span class="date_created">10 days ago</span>
-            <i class="fa fa-heart"></i>
-            <i class="fa fa-retweet"></i>
-            <i class="fa fa-flag"></i>
-          </footer>
-        </article>
-      </article>
+      <section class="posted-tweets"></section>
     </main>
   </body>
 </html>
