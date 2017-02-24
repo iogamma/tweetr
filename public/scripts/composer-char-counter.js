@@ -6,11 +6,11 @@ $(document).ready(function() {
   $('.counter').text(CHAR_COUNT);
 
   $('textarea').on('keyup', function() {
-    const numChar = $(this).val().length;  //lowercase dynamic property
+    const numChar = $(this).val().length;
     const remChar = CHAR_COUNT - numChar;
 
     remChar < 0 ? $('.counter').css('color', 'red')
-                : $('.counter').css('color', 'black')
+                : $('.counter').css('color', 'black');
     $('.counter').text(remChar);
   });
 });

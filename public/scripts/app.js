@@ -67,7 +67,7 @@ $(document).ready(function() {
     const validity = {
       isValid: true,
       invalidMsg: ''
-    }
+    };
 
     if(!userData) {
       validity.isValid = false;
