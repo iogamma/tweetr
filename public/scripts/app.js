@@ -3,6 +3,35 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+
+function timeSince(date) {
+
+    var seconds = Math.floor((new Date() - date) / 1000);
+
+    var interval = Math.floor(seconds / 31536000);
+
+    if (interval > 1) {
+        return interval + " years";
+    }
+    interval = Math.floor(seconds / 2592000);
+    if (interval > 1) {
+        return interval + " months";
+    }
+    interval = Math.floor(seconds / 86400);
+    if (interval > 1) {
+        return interval + " days";
+    }
+    interval = Math.floor(seconds / 3600);
+    if (interval > 1) {
+        return interval + " hours";
+    }
+    interval = Math.floor(seconds / 60);
+    if (interval > 1) {
+        return interval + " minutes";
+    }
+    return Math.floor(seconds) + " seconds";
+}
+
 $(document).ready(function() {
   const $postedTweets = $('.posted-tweets');
 
@@ -12,19 +41,20 @@ $(document).ready(function() {
     const usernameHTMLEsc = html`${tweet.user.name}`;
     const handleHTMLEsc = html`${tweet.user.handle}`;
     const contentHTMLEsc = html`${tweet.content.text}`;
-
+    const $newTweet = $('<article/>').addClass('logged-tweet');
+    const timeFromCreation = timeSince(tweet.createdAt);
+    console.log(timeFromCreation);
     /* Cirricumlum method for creating a new tweet.
-    // Adv: Better DOM performance, easier to modify in script file
+    // Adv:
     // Disadv: less readable in the html sense
 
 
     /* Alternate method for creating a new tweet. */
     // Adv: more readable in terms of structure
     // Disadv: two languages in one file
-    const $newTweet = $('.posted-tweets');
-    $newTweet.prepend(
-      `<article class="logged-tweet">
-        <header class="header">
+
+    $newTweet.append(
+      `<header class="header">
           <img class="avatar" src="${tweet.user.avatars.regular}">
           <h1 class="username">${usernameHTMLEsc}</h1>
           <span class="handle">${handleHTMLEsc}</span>
@@ -33,21 +63,20 @@ $(document).ready(function() {
           ${contentHTMLEsc}
         </p>
         <footer class="footer">
-          <span class="date-created">${tweet.created_at} days ago</span>
+          <span class="date-created">${timeFromCreation} ago</span>
           <i class="fa fa-heart" ></i>
           <i class="fa fa-retweet"></i>
           <i class="fa fa-flag"></i>
-        </footer>
-      </article>`);
+        </footer>`);
 
     return $newTweet;
   }
 
   function renderTweets(tweetsArr) {
     $postedTweets.empty();
-    // look into maps
+
     for (let tweet of tweetsArr) {
-      $postedTweets.append(createTweetElement(tweet));
+      $postedTweets.prepend(createTweetElement(tweet));
     }
   }
 

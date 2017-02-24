@@ -56,12 +56,16 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <span class="compose">Compose Tweet</span>
+        <header class="header">
+          <h1 class="compose">Compose Tweet</h1>
+        </header>
         <form class="tweet-form">
           <textarea class="user-input" name="text" placeholder="What are you humming about?"></textarea>
-          <input class="submit" type="submit" value="Tweet">
-          <span class="invalid-msg"></span>
-          <span class="counter"></span>
+          <footer class="footer">
+            <input class="submit" type="submit" value="Tweet">
+            <span class="invalid-msg"></span>
+            <span class="counter"></span>
+          </footer>
         </form>
       </section>
       <section class="posted-tweets">
