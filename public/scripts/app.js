@@ -15,7 +15,6 @@ $(document).ready(function() {
     const contentHTMLEsc = html`${tweet.content.text}`;
     const $newTweet = $('<article/>').addClass('logged-tweet');
     const timeFromCreation = timeSince(tweet.createdAt);
-    console.log(contentHTMLEsc);
 
     $newTweet.append(
       `<header class="header">
@@ -54,22 +53,20 @@ $(document).ready(function() {
     });
   }
 
-  // Checks for invalid cases in user input and returns a boolean and message if invalid
-  function validateUserData(userData) {
-    const validity = {
-      isValid: true,
-      invalidMsg: ''
-    };
+  // Checks for invalid cases in user input and returns an array of invalid messages
+  function validateUserData(userInput) {
+    const invalidMsgs = [];
 
-    if(!userData) {
-      validity.isValid = false;
-      validity.invalidMsg = 'You cannot post an empty tweet.';
-    } else if(userData.length > 140) {
-      validity.isValid = false;
-      validity.invalidMsg = 'You have reached your maximum character limit.';
+    spaceEscInput = userInput.replace(/\s/g, '');
+
+    if(!spaceEscInput) {
+      invalidMsgs.push('You cannot post an empty tweet.');
+    }
+    if(userInput.length > 140) {
+      invalidMsgs.push('You have reached your maximum character limit.');
     }
 
-    return validity;
+    return invalidMsgs;
   }
 
   // Render the tweets on new or refreshed visit
@@ -79,10 +76,17 @@ $(document).ready(function() {
   $('.tweet-form').on('submit', function(event) {
     event.preventDefault();
 
-    let tweetText = $(this).find('textarea').val();
-    let validity = validateUserData(tweetText);
+    const tweetText = $(this).find('textarea').val();
+    const invalidMsgs = validateUserData(tweetText);
 
-    if (validity.isValid) {
+    if (invalidMsgs) {
+      $('.invalid-msg').empty();
+      $('.invalid-msg').text(() => {
+        for (const msg of invalidMsgs) {
+          $('.invalid-msg').append(`<li>${msg}</li>`);
+        }
+      });
+    } else {
       $.ajax({
         data: $(this).serialize(),
         method: 'POST',
@@ -95,8 +99,6 @@ $(document).ready(function() {
       }).fail(function() {
         alert('Failed to post tweet.');
       });
-    } else {
-      $('.invalid-msg').text(validity.invalidMsg);
     }
   });
 
@@ -104,6 +106,5 @@ $(document).ready(function() {
     $('.new-tweet').slideToggle();
     $('.tweet-form').find('textarea').focus();
   });
-
 
 });

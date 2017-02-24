@@ -3,6 +3,7 @@
   <head>
     <!-- Set Unicode -->
     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
@@ -32,13 +33,13 @@
      <script type="text/javascript" src="vendor/jquery-3.1.1.js"></script>
 
     <!-- App JS -->
-    <script type="text/javascript" src="scripts/app.js"></script>
+    <script src="scripts/app.js"></script>
 
     <!-- Character Counter JS -->
-    <script type="text/javascript" src="scripts/composer-char-counter.js"></script>
+    <script src="scripts/composer-char-counter.js"></script>
 
     <!-- Helper Functions -->
-    <script type="text/javascript" src="scripts/helpers.js"></script>
+    <script src="scripts/helpers.js"></script>
   </head>
 
   <body>
@@ -63,7 +64,7 @@
           <textarea class="user-input" name="text" placeholder="What are you humming about?"></textarea>
           <footer class="footer">
             <input class="submit" type="submit" value="Tweet">
-            <span class="invalid-msg"></span>
+            <ul class="invalid-msg"></ul>
             <span class="counter"></span>
           </footer>
         </form>
