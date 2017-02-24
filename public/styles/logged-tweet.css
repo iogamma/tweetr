@@ -4,7 +4,6 @@
   border-radius: 5px;
   margin: 1em 0;
   overflow: auto;
-  padding: 0 0 10px;
 }
 
 .logged-tweet .avatar {
@@ -15,7 +14,7 @@
 }
 
 .logged-tweet .date-created {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .logged-tweet .fa {
@@ -31,8 +30,9 @@
 }
 
 .logged-tweet .footer {
-  padding: 0 10px 0;
+  border-top: 1px solid lightgrey;
   overflow: auto;
+  padding: 8px;
 }
 
 .logged-tweet .handle {
@@ -46,7 +46,11 @@
 .logged-tweet .header {
   background: lightgrey;
   overflow: auto;
-  padding: 10px;
+  padding: 8px;
+  position: relative;
+  left: 0;
+  right: 0;
+  width: 100%;
 }
 
 .logged-tweet .username {
@@ -64,5 +68,5 @@
 
 .logged-tweet .user-content {
   margin: 0;
-  padding: 2em 1em;
+  padding: 20px 10px ;
 }

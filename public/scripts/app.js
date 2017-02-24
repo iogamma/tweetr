@@ -4,34 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-function timeSince(date) {
-
-    var seconds = Math.floor((new Date() - date) / 1000);
-
-    var interval = Math.floor(seconds / 31536000);
-
-    if (interval > 1) {
-        return interval + " years";
-    }
-    interval = Math.floor(seconds / 2592000);
-    if (interval > 1) {
-        return interval + " months";
-    }
-    interval = Math.floor(seconds / 86400);
-    if (interval > 1) {
-        return interval + " days";
-    }
-    interval = Math.floor(seconds / 3600);
-    if (interval > 1) {
-        return interval + " hours";
-    }
-    interval = Math.floor(seconds / 60);
-    if (interval > 1) {
-        return interval + " minutes";
-    }
-    return Math.floor(seconds) + " seconds";
-}
-
 $(document).ready(function() {
   const $postedTweets = $('.posted-tweets');
 
@@ -43,15 +15,7 @@ $(document).ready(function() {
     const contentHTMLEsc = html`${tweet.content.text}`;
     const $newTweet = $('<article/>').addClass('logged-tweet');
     const timeFromCreation = timeSince(tweet.createdAt);
-    console.log(timeFromCreation);
-    /* Cirricumlum method for creating a new tweet.
-    // Adv:
-    // Disadv: less readable in the html sense
-
-
-    /* Alternate method for creating a new tweet. */
-    // Adv: more readable in terms of structure
-    // Disadv: two languages in one file
+    console.log(contentHTMLEsc);
 
     $newTweet.append(
       `<header class="header">
@@ -74,7 +38,6 @@ $(document).ready(function() {
 
   function renderTweets(tweetsArr) {
     $postedTweets.empty();
-
     for (let tweet of tweetsArr) {
       $postedTweets.prepend(createTweetElement(tweet));
     }
