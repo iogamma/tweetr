@@ -14,6 +14,7 @@ $(document).ready(function() {
     const handleHTMLEsc = html`${tweet.user.handle}`;
     const contentHTMLEsc = html`${tweet.content.text}`;
     const $newTweet = $('<article/>').addClass('logged-tweet');
+    // sudo apt-get install ntp
     const timeFromCreation = timeSince(tweet.createdAt);
 
     $newTweet.append(
@@ -37,9 +38,9 @@ $(document).ready(function() {
 
   function renderTweets(tweetsArr) {
     $postedTweets.empty();
-    for (let tweet of tweetsArr) {
+    tweetsArr.map((tweet) => {
       $postedTweets.prepend(createTweetElement(tweet));
-    }
+    });
   }
 
   function loadTweets() {
@@ -79,7 +80,7 @@ $(document).ready(function() {
     const tweetText = $(this).find('textarea').val();
     const invalidMsgs = validateUserData(tweetText);
 
-    if (invalidMsgs) {
+    if (invalidMsgs.length) {
       $('.invalid-msg').empty();
       $('.invalid-msg').text(() => {
         for (const msg of invalidMsgs) {
@@ -94,7 +95,7 @@ $(document).ready(function() {
       }).then(function() {
         $('.tweet-form').trigger('reset');
         $('.invalid-msg').empty();
-        //TODO update counter
+        $('.counter').text('140');
         loadTweets();
       }).fail(function() {
         alert('Failed to post tweet.');
